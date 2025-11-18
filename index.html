@@ -1,1128 +1,521 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>سجي شوب - عطور فاخرة</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary-gold: #D4AF37;
-            --dark-gold: #B8941F;
-            --light-gold: #F4E4C1;
-            --dark-bg: #1a1a1a;
-            --light-bg: #fafafa;
-            --white: #ffffff;
-            --text-dark: #333333;
-            --text-light: #666666;
-            --border-color: #e0e0e0;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Tajawal', sans-serif;
-            background-color: var(--white);
-            color: var(--text-dark);
-        }
-
-        /* Header */
-        .main-header {
-            background: var(--white);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .navbar {
-            padding: 1rem 0;
-        }
-
-        .brand-logo {
-            font-size: 2rem;
-            font-weight: 900;
-            color: var(--primary-gold);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .brand-logo:hover {
-            color: var(--dark-gold);
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-            margin: 0;
-            padding: 0;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--text-dark);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-            position: relative;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary-gold);
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            right: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary-gold);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .header-actions {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .search-box {
-            position: relative;
-        }
-
-        .search-input {
-            border: 1px solid var(--border-color);
-            border-radius: 25px;
-            padding: 8px 40px 8px 15px;
-            width: 250px;
-            transition: all 0.3s ease;
-        }
-
-        .search-input:focus {
-            outline: none;
-            border-color: var(--primary-gold);
-            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
-        }
-
-        .search-btn {
-            position: absolute;
-            left: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: none;
-            border: none;
-            color: var(--text-light);
-            cursor: pointer;
-        }
-
-        .cart-icon {
-            position: relative;
-            font-size: 1.5rem;
-            color: var(--text-dark);
-            cursor: pointer;
-            transition: color 0.3s ease;
-        }
-
-        .cart-icon:hover {
-            color: var(--primary-gold);
-        }
-
-        .cart-count {
-            position: absolute;
-            top: -8px;
-            left: -8px;
-            background: var(--primary-gold);
-            color: white;
-            font-size: 0.7rem;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-        }
-
-        /* Enhanced Hero Section */
-        .hero-section {
-            position: relative;
-            height: 100vh;
-            overflow: hidden;
-            background: linear-gradient(135deg, var(--dark-bg) 0%, #2d2d2d 100%);
-        }
-
-        .hero-carousel {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
-
-        .carousel-item {
-            height: 100vh;
-            position: relative;
-        }
-
-        .carousel-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.3;
-            filter: brightness(0.7);
-        }
-
-        .hero-content {
-            position: absolute;
-            top: 50%;
-            right: 50%;
-            transform: translate(50%, -50%);
-            text-align: center;
-            z-index: 2;
-            width: 90%;
-            max-width: 800px;
-        }
-
-        .hero-title {
-            font-size: 4rem;
-            font-weight: 900;
-            color: var(--primary-gold);
-            margin-bottom: 1.5rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-            animation: fadeInDown 1s ease-out;
-        }
-
-        .hero-description {
-            font-size: 1.3rem;
-            color: var(--white);
-            line-height: 1.8;
-            margin-bottom: 3rem;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-            animation: fadeInUp 1s ease-out 0.5s both;
-        }
-
-        .hero-cta {
-            animation: fadeInUp 1s ease-out 1s both;
-        }
-
-        .cta-button {
-            background: linear-gradient(135deg, var(--primary-gold), var(--dark-gold));
-            color: var(--white);
-            padding: 15px 40px;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.2rem;
-            font-weight: 600;
-            text-decoration: none;
-            display: inline-block;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
-            color: var(--white);
-        }
-
-        /* Floating Perfume Bottles Animation */
-        .floating-bottles {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: 1;
-            pointer-events: none;
-        }
-
-        .bottle {
-            position: absolute;
-            width: 120px;
-            height: 300px;
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
-            opacity: 0.8;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        .bottle:nth-child(1) {
-            top: 10%;
-            right: 10%;
-            animation-delay: 0s;
-            background-image: url('image/products/1.webp');
-        }
-
-        .bottle:nth-child(2) {
-            top: 20%;
-            left: 15%;
-            animation-delay: 1s;
-            background-image: url('image/products/2.webp');
-        }
-
-        .bottle:nth-child(3) {
-            bottom: 15%;
-            right: 20%;
-            animation-delay: 2s;
-            background-image: url('image/products/3.webp');
-        }
-
-        .bottle:nth-child(4) {
-            bottom: 25%;
-            left: 10%;
-            animation-delay: 3s;
-            background-image: url('image/products/4.webp');
-        }
-
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0) rotate(0deg);
-            }
-            25% {
-                transform: translateY(-20px) rotate(5deg);
-            }
-            50% {
-                transform: translateY(-10px) rotate(-5deg);
-            }
-            75% {
-                transform: translateY(-15px) rotate(3deg);
-            }
-        }
-
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Products Section */
-        .products-section {
-            padding: 60px 0;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--text-dark);
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: var(--primary-gold);
-        }
-
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
-        .product-card {
-            background: var(--white);
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .product-card:hover {
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            transform: translateY(-5px);
-        }
-
-        .product-badge {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: var(--primary-gold);
-            color: var(--white);
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            z-index: 2;
-        }
-
-        .product-image-container {
-            position: relative;
-            overflow: hidden;
-            height: 300px;
-            background: var(--light-bg);
-        }
-
-        .product-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-
-        .product-card:hover .product-image {
-            transform: scale(1.05);
-        }
-
-        .product-actions {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(0,0,0,0.8);
-            padding: 15px;
-            transform: translateY(100%);
-            transition: transform 0.3s ease;
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        .product-card:hover .product-actions {
-            transform: translateY(0);
-        }
-
-        .action-btn {
-            background: var(--white);
-            border: none;
-            padding: 8px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 0.9rem;
-            color: var(--text-dark);
-        }
-
-        .action-btn:hover {
-            background: var(--primary-gold);
-            color: var(--white);
-        }
-
-        .product-info {
-            padding: 20px;
-        }
-
-        .product-brand {
-            font-size: 0.9rem;
-            color: var(--text-light);
-            margin-bottom: 5px;
-        }
-
-        .product-name {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--text-dark);
-            margin-bottom: 10px;
-            line-height: 1.4;
-            height: 48px;
-            overflow: hidden;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-        }
-
-        .product-price {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-
-        .current-price {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--primary-gold);
-        }
-
-        .old-price {
-            font-size: 1rem;
-            color: var(--text-light);
-            text-decoration: line-through;
-        }
-
-        .discount {
-            background: #ff4444;
-            color: white;
-            padding: 2px 8px;
-            border-radius: 3px;
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
-
-        .add-to-cart {
-            width: 100%;
-            background: var(--primary-gold);
-            color: var(--white);
-            border: none;
-            padding: 12px;
-            border-radius: 5px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-
-
-
-        }
-
-        .add-to-cart:hover {
-            background: var(--dark-gold);
-            transform: translateY(-2px);
-        }
-
-        /* Footer */
-        .main-footer {
-            background: var(--white);
-            padding: 50px 0 20px;
-            border-top: 1px solid var(--border-color);
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 50px;
-            margin-bottom: 30px;
-        }
-
-        .footer-section h3 {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--text-dark);
-            margin-bottom: 25px;
-            position: relative;
-        }
-
-        .footer-section h3::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            right: 0;
-            width: 40px;
-            height: 2px;
-            background: var(--primary-gold);
-        }
-
-        .footer-description {
-            font-size: 1rem;
-            line-height: 1.8;
-            color: var(--text-light);
-            margin-bottom: 25px;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 15px;
-        }
-
-        .social-link {
-            width: 45px;
-            height: 45px;
-            background: var(--light-bg);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-dark);
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
-        }
-
-        .social-link:hover {
-            background: var(--primary-gold);
-            color: var(--white);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
-        }
-
-        /* Enhanced Contact Info */
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            padding: 15px;
-            background: var(--light-bg);
-            border-radius: 10px;
-            transition: all 0.3s ease;
-            border: 1px solid transparent;
-        }
-
-        .contact-item:hover {
-            background: var(--white);
-            border-color: var(--primary-gold);
-            transform: translateX(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .contact-icon {
-            width: 50px;
-            height: 50px;
-            background: var(--primary-gold);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
-            font-size: 1.3rem;
-            flex-shrink: 0;
-        }
-
-        .contact-details {
-            flex: 1;
-        }
-
-        .contact-label {
-            font-size: 0.85rem;
-            color: var(--text-light);
-            margin-bottom: 2px;
-            font-weight: 500;
-        }
-
-        .contact-value {
-            font-size: 1rem;
-            color: var(--text-dark);
-            font-weight: 600;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 25px;
-            border-top: 1px solid var(--border-color);
-            color: var(--text-light);
-            font-size: 0.9rem;
-        }
-
-        /* Floating WhatsApp */
-        .floating-whatsapp {
-            position: fixed;
-            bottom: 30px;
-            left: 30px;
-            width: 60px;
-            height: 60px;
-            background: #25D366;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
-            font-size: 1.8rem;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
-
-        .floating-whatsapp:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .search-input {
-                width: 150px;
-            }
-
-            .hero-title {
-                font-size: 2.5rem;
-            }
-
-            .hero-description {
-                font-size: 1.1rem;
-            }
-
-            .bottle {
-                width: 80px;
-                height: 200px;
-            }
-
-            .products-grid {
-                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-                gap: 20px;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-                gap: 40px;
-            }
-
-            .social-links {
-                justify-content: center;
-            }
-
-            .contact-item {
-                flex-direction: column;
-                text-align: center;
-                gap: 10px;
-            }
-
-            .footer-section h3::after {
-                right: 50%;
-                transform: translateX(50%);
-            }
-        }
-    </style>
-</head>
-<body>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+<link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
     <!-- Header -->
     <header class="main-header">
-        <div class="container">
-            <nav class="navbar">
-                <a href="#" class="brand-logo">سجى شوب </a>
+      <div class="container">
+        <nav class="navbar">
+          <a href="#" class="brand-logo">سجى شوب </a>
 
-                <ul class="nav-links">
-                    <li><a href="#">الرئيسية</a></li>
-                    <li><a href="#products">منتجاتنا</a></li>
+          <ul class="nav-links">
+            <li><a href="#">الرئيسية</a></li>
+            <li><a href="#products">منتجاتنا</a></li>
 
-                    <li><a href="#contact">تواصل معنا</a></li>
-                </ul>
+            <li><a href="#contact">تواصل معنا</a></li>
+          </ul>
 
-                <div class="header-actions">
-                    <div class="search-box">
-                        <input type="text" class="search-input" placeholder="ابحث عن عطور...">
-                        <button class="search-btn">
-                            <i class="fas fa-search"></i>
-                        </button>
-                    </div>
-                    <!-- <div class="cart-icon">
+          <div class="header-actions">
+            <div class="search-box">
+              <input
+                type="text"
+                class="search-input"
+                placeholder="ابحث عن عطور..."
+              />
+              <button class="search-btn">
+                <i class="fas fa-search"></i>
+              </button>
+            </div>
+            <!-- <div class="cart-icon">
                         <i class="fas fa-shopping-cart"></i>
                         <span class="cart-count">0</span>
                     </div> -->
-                </div>
-            </nav>
-        </div>
+          </div>
+        </nav>
+      </div>
     </header>
 
     <!-- Enhanced Hero Section -->
     <section class="hero-section">
-        <!-- Background Carousel -->
-        <div id="heroCarousel" class="carousel slide hero-carousel" data-bs-ride="carousel">
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
-                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
-                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
-            </div>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="image/products/p4.avif" class="carousel-image" alt="عطور فاخرة">
-                </div>
-                <div class="carousel-item">
-                    <img src="image/products/p1.avif" class="carousel-image" alt="عطور فاخرة">
-                </div>
-                <div class="carousel-item">
-                    <img src="image/products/p5.avif" class="carousel-image" alt="عطور فاخرة">
-                </div>
-            </div>
+      <!-- Background Carousel -->
+      <div
+        id="heroCarousel"
+        class="carousel slide hero-carousel"
+        data-bs-ride="carousel"
+      >
+        <div class="carousel-indicators">
+          <button
+            type="button"
+            data-bs-target="#heroCarousel"
+            data-bs-slide-to="0"
+            class="active"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#heroCarousel"
+            data-bs-slide-to="1"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#heroCarousel"
+            data-bs-slide-to="2"
+          ></button>
         </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img
+              src="image/products/p4.avif"
+              class="carousel-image"
+              alt="عطور فاخرة"
+            />
+          </div>
+          <div class="carousel-item">
+            <img
+              src="image/products/p1.avif"
+              class="carousel-image"
+              alt="عطور فاخرة"
+            />
+          </div>
+          <div class="carousel-item">
+            <img
+              src="image/products/p5.avif"
+              class="carousel-image"
+              alt="عطور فاخرة"
+            />
+          </div>
+        </div>
+      </div>
 
-        <!-- Floating Perfume Bottles -->
-        <div class="floating-bottles">
-            <div class="bottle"></div>
-            <div class="bottle"></div>
-            <div class="bottle"></div>
-            <div class="bottle"></div>
-        </div>
+      <!-- Floating Perfume Bottles -->
+      <div class="floating-bottles">
+        <div class="bottle"></div>
+        <div class="bottle"></div>
+        <div class="bottle"></div>
+        <div class="bottle"></div>
+      </div>
 
-        <!-- Hero Content -->
-        <div class="hero-content">
-            <h1 class="hero-title" >سجى شوب مصنع السعادة    </h1>
-            <p class="hero-description">
-                اكتشف مجموعتنا الحصرية من العطور الفاخرة التي تجمع بين الأصالة والحداثة،
-                مصممة خصيصاً لتناسب ذوقك الراقي وتضفي لمسة ساحرة على شخصيتك.
-            </p>
-            <div class="hero-cta">
-                <a href="#products" class="cta-button">
-                    استكشف المجموعة <i class="fas fa-arrow-down mr-2"></i>
-                </a>
-            </div>
+      <!-- Hero Content -->
+      <div class="hero-content">
+        <h1 class="hero-title">سجى شوب مصنع السعادة</h1>
+        <p class="hero-description">
+          اكتشف مجموعتنا الحصرية من العطور الفاخرة التي تجمع بين الأصالة
+          والحداثة، مصممة خصيصاً لتناسب ذوقك الراقي وتضفي لمسة ساحرة على شخصيتك.
+        </p>
+        <div class="hero-cta">
+          <a href="#products" class="cta-button">
+            استكشف المجموعة <i class="fas fa-arrow-down mr-2"></i>
+          </a>
         </div>
+      </div>
     </section>
 
     <!-- Products Section -->
     <section id="products" class="products-section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">مجموعتنا الحصرية</h2>
-            </div>
-
-            <div class="products-grid">
-                <!-- Product 1 -->
-                <div class="product-card">
-                    <span class="product-badge">الأكثر مبيعاً</span>
-                    <div class="product-image-container">
-                        <img src="image/products/1.webp" alt="عطر الذهبي الملكي" class="product-image">
-                        <div class="product-actions">
-                            <button class="action-btn">
-                                <i class="far fa-heart"></i>
-                            </button>
-                            <button class="action-btn">
-                                <i class="fas fa-eye"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <div class="product-brand">سجي شوب</div>
-                        <h3 class="product-name">عطر سوفاج  ديور - 100 مل</h3>
-                        <div class="product-price">
-                            <span class="current-price">750 ريال</span>
-                            <span class="old-price">550 جنيه</span>
-                            <span class="discount">18%</span>
-                        </div>
-                        <a href="https://wa.me/961959414?text=أرغب%20في%20شراء%20عطر%20سوفاج  ديور %20الملكي"
-                           class="add-to-cart" target="_blank">
-                            <i class="fab fa-whatsapp"></i>
-                            اطلب عبر الواتساب
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Product 2 -->
-                <div class="product-card">
-                    <span class="product-badge">جديد</span>
-                    <div class="product-image-container">
-                        <img src="image/products/2.webp" alt="عطر الليل الساحر" class="product-image">
-                        <div class="product-actions">
-                            <button class="action-btn">
-                                <i class="far fa-heart"></i>
-                            </button>
-                            <button class="action-btn">
-                                <i class="fas fa-eye"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <div class="product-brand">سجي شوب</div>
-                        <h3 class="product-name">عطر مانسيرا ريد توباكو الساحر - 100 مل</h3>
-                        <div class="product-price">
-                            <span class="current-price">550 جنيه</span>
-                        </div>
-                        <a href="https://wa.me/961959414?text=أرغب%20في%20شراء%20عطر%20 مانسيرا ريد توباكو %20الساحر"
-                           class="add-to-cart" target="_blank">
-                            <i class="fab fa-whatsapp"></i>
-                            اطلب عبر الواتساب
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Product 3 -->
-                <div class="product-card">
-                    <div class="product-image-container">
-                        <img src="image/products/3.webp" alt="عطر الفجر الذهبي" class="product-image">
-                        <div class="product-actions">
-                            <button class="action-btn">
-                                <i class="far fa-heart"></i>
-                            </button>
-                            <button class="action-btn">
-                                <i class="fas fa-eye"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <div class="product-brand">سجي شوب</div>
-                        <h3 class="product-name">عطر فيرزاتشي ايرور  - 100 مل</h3>
-                        <div class="product-price">
-                            <span class="current-price">700 جنيه</span>
-                            <span class="old-price">620 جنيه</span>
-                            <span class="discount">20%</span>
-                        </div>
-                        <a href="https://wa.me/961959414?text=أرغب%20في%20شراء%20عطر%20فيرزاتشي ايرور%20"
-                           class="add-to-cart" target="_blank">
-                            <i class="fab fa-whatsapp"></i>
-                            اطلب عبر الواتساب
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Product 4 -->
-                <div class="product-card">
-                    <span class="product-badge">مميز</span>
-                    <div class="product-image-container">
-                        <img src="image/products/4.webp" alt="عطر العود الشرقي" class="product-image">
-                        <div class="product-actions">
-                            <button class="action-btn">
-                                <i class="far fa-heart"></i>
-                            </button>
-                            <button class="action-btn">
-                                <i class="fas fa-eye"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <div class="product-brand">سجي شوب</div>
-                        <h3 class="product-name">عطر  جريد افنتوس - 100 مل</h3>
-                        <div class="product-price">
-                            <span class="current-price">520 جنيه</span>
-                        </div>
-                        <a href="https://wa.me/961959414?text=أرغب%20في%20شراء%20عطر%20 جريد افنتوس%20الشرقي"
-                           class="add-to-cart" target="_blank">
-                            <i class="fab fa-whatsapp"></i>
-                            اطلب عبر الواتساب
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Product 5 -->
-                <div class="product-card">
-                    <div class="product-image-container">
-                        <img src="image/products/5.webp" alt="عطر الورد الفاخر" class="product-image">
-                        <div class="product-actions">
-                            <button class="action-btn">
-                                <i class="far fa-heart"></i>
-                            </button>
-                            <button class="action-btn">
-                                <i class="fas fa-eye"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <div class="product-brand">سجي شوب</div>
-                        <h3 class="product-name">عطر نيشان هاشيفات الفاخر - 100 مل</h3>
-                        <div class="product-price">
-                            <span class="current-price">420 جنيه</span>
-                            <span class="old-price">500 جنيه</span>
-                            <span class="discount">16%</span>
-                        </div>
-                        <a href="https://wa.me/961959414?text=أرغب%20في%20شراء%20عطر%20 نيشان هاشيفات%20الفاخر"
-                           class="add-to-cart" target="_blank">
-                            <i class="fab fa-whatsapp"></i>
-                            اطلب عبر الواتساب
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Product 6 -->
-                <div class="product-card">
-                    <div class="product-image-container">
-                        <img src="image/products/6.webp" alt="عطر المحيط الأزرق" class="product-image">
-                        <div class="product-actions">
-                            <button class="action-btn">
-                                <i class="far fa-heart"></i>
-                            </button>
-                            <button class="action-btn">
-                                <i class="fas fa-eye"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <div class="product-brand">سجي شوب</div>
-                        <h3 class="product-name">عطر  توم فورد - 100 مل</h3>
-                        <div class="product-price">
-                            <span class="current-price">700 جنيه</span>
-                        </div>
-                        <a href="https://wa.me/961959414?text=أرغب%20في%20شراء%20عطر%20 توم فورد%20"
-                           class="add-to-cart" target="_blank">
-                            <i class="fab fa-whatsapp"></i>
-                            اطلب عبر الواتساب
-                        </a>
-                    </div>
-                </div>
-            </div>
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">مجموعتنا الحصرية</h2>
         </div>
+
+        <div class="products-grid">
+          <!-- Product 1 -->
+          <div class="product-card">
+            <span class="product-badge">الأكثر مبيعاً</span>
+            <div class="product-image-container">
+              <img
+                src="image/products/1.webp"
+                alt="عطر الذهبي الملكي"
+                class="product-image"
+              />
+              <div class="product-actions">
+                <button class="action-btn">
+                  <i class="far fa-heart"></i>
+                </button>
+                <button class="action-btn">
+                  <i class="fas fa-eye"></i>
+                </button>
+              </div>
+            </div>
+            <div class="product-info">
+              <div class="product-brand">سجي شوب</div>
+              <h3 class="product-name">عطر سوفاج ديور - 100 مل</h3>
+              <div class="product-price">
+                <span class="current-price">450 ألف</span>
+                <span class="old-price">550 ألف</span>
+                <span class="discount">18%</span>
+              </div>
+              <a
+                href="https://wa.me/961959414?text=أرغب%20في%20شراء%20عطر%20سوفاج  ديور %20الملكي"
+                class="add-to-cart"
+                target="_blank"
+              >
+                <i class="fab fa-whatsapp"></i>
+                اطلب عبر الواتساب
+              </a>
+            </div>
+          </div>
+
+          <!-- Product 2 -->
+          <div class="product-card">
+            <span class="product-badge">جديد</span>
+            <div class="product-image-container">
+              <img
+                src="image/products/2.webp"
+                alt="عطر الليل الساحر"
+                class="product-image"
+              />
+              <div class="product-actions">
+                <button class="action-btn">
+                  <i class="far fa-heart"></i>
+                </button>
+                <button class="action-btn">
+                  <i class="fas fa-eye"></i>
+                </button>
+              </div>
+            </div>
+            <div class="product-info">
+              <div class="product-brand">سجي شوب</div>
+              <h3 class="product-name">
+                عطر مانسيرا ريد توباكو الساحر - 100 مل
+              </h3>
+              <div class="product-price">
+                <span class="current-price">550 ألف</span>
+              </div>
+              <a
+                href="https://wa.me/961959414?text=أرغب%20في%20شراء%20عطر%20 مانسيرا ريد توباكو %20الساحر"
+                class="add-to-cart"
+                target="_blank"
+              >
+                <i class="fab fa-whatsapp"></i>
+                اطلب عبر الواتساب
+              </a>
+            </div>
+          </div>
+
+          <!-- Product 3 -->
+          <div class="product-card">
+            <div class="product-image-container">
+              <img
+                src="image/products/3.webp"
+                alt="عطر الفجر الذهبي"
+                class="product-image"
+              />
+              <div class="product-actions">
+                <button class="action-btn">
+                  <i class="far fa-heart"></i>
+                </button>
+                <button class="action-btn">
+                  <i class="fas fa-eye"></i>
+                </button>
+              </div>
+            </div>
+            <div class="product-info">
+              <div class="product-brand">سجي شوب</div>
+              <h3 class="product-name">عطر فيرزاتشي ايرور - 100 مل</h3>
+              <div class="product-price">
+                <span class="current-price">500 ألف</span>
+                <span class="old-price">620 الف</span>
+                <span class="discount">20%</span>
+              </div>
+              <a
+                href="https://wa.me/249961959414?text=أرغب%20في%20شراء%20عطر%20فيرزاتشي ايرور%20"
+                class="add-to-cart"
+                target="_blank"
+              >
+                <i class="fab fa-whatsapp"></i>
+                اطلب عبر الواتساب
+              </a>
+            </div>
+          </div>
+
+          <!-- Product 4 -->
+          <div class="product-card">
+            <span class="product-badge">مميز</span>
+            <div class="product-image-container">
+              <img
+                src="image/products/4.webp"
+                alt="عطر العود الشرقي"
+                class="product-image"
+              />
+              <div class="product-actions">
+                <button class="action-btn">
+                  <i class="far fa-heart"></i>
+                </button>
+                <button class="action-btn">
+                  <i class="fas fa-eye"></i>
+                </button>
+              </div>
+            </div>
+            <div class="product-info">
+              <div class="product-brand">سجي شوب</div>
+              <h3 class="product-name">عطر جريد افنتوس - 100 مل</h3>
+              <div class="product-price">
+                <span class="current-price">520 ألف</span>
+              </div>
+              <a
+                href="https://wa.me/961959414?text=أرغب%20في%20شراء%20عطر%20 جريد افنتوس%20الشرقي"
+                class="add-to-cart"
+                target="_blank"
+              >
+                <i class="fab fa-whatsapp"></i>
+                اطلب عبر الواتساب
+              </a>
+            </div>
+          </div>
+
+          <!-- Product 5 -->
+          <div class="product-card">
+            <div class="product-image-container">
+              <img
+                src="image/products/5.webp"
+                alt="عطر الورد الفاخر"
+                class="product-image"
+              />
+              <div class="product-actions">
+                <button class="action-btn">
+                  <i class="far fa-heart"></i>
+                </button>
+                <button class="action-btn">
+                  <i class="fas fa-eye"></i>
+                </button>
+              </div>
+            </div>
+            <div class="product-info">
+              <div class="product-brand">سجي شوب</div>
+              <h3 class="product-name">عطر نيشان هاشيفات الفاخر - 100 مل</h3>
+              <div class="product-price">
+                <span class="current-price">420 ألف</span>
+                <span class="old-price">500 ألف</span>
+                <span class="discount">16%</span>
+              </div>
+              <a
+                href="https://wa.me/961959414?text=أرغب%20في%20شراء%20عطر%20 نيشان هاشيفات%20الفاخر"
+                class="add-to-cart"
+                target="_blank"
+              >
+                <i class="fab fa-whatsapp"></i>
+                اطلب عبر الواتساب
+              </a>
+            </div>
+          </div>
+
+          <!-- Product 6 -->
+          <div class="product-card">
+            <div class="product-image-container">
+              <img
+                src="image/products/6.webp"
+                alt="عطر المحيط الأزرق"
+                class="product-image"
+              />
+              <div class="product-actions">
+                <button class="action-btn">
+                  <i class="far fa-heart"></i>
+                </button>
+                <button class="action-btn">
+                  <i class="fas fa-eye"></i>
+                </button>
+              </div>
+            </div>
+            <div class="product-info">
+              <div class="product-brand">سجي شوب</div>
+              <h3 class="product-name">عطر توم فورد - 100 مل</h3>
+              <div class="product-price">
+                <span class="current-price">700 ألف</span>
+              </div>
+              <a
+                href="https://wa.me/961959414?text=أرغب%20في%20شراء%20عطر%20 توم فورد%20"
+                class="add-to-cart"
+                target="_blank"
+              >
+                <i class="fab fa-whatsapp"></i>
+                اطلب عبر الواتساب
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Footer -->
     <footer class="main-footer" id="contact">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>سجي شوب</h3>
-                    <p class="footer-description">
-                        متجر متخصص في بيع أجود أنواع العطور الفاخرة من أشهر الماركات العالمية بأفضل الأسعار.
-                    </p>
-                    <div class="social-links">
-                        <a href="#" class="social-link">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="#" class="social-link">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#" class="social-link">
-                            <i class="fab fa-snapchat-ghost"></i>
-                        </a>
-                        <a href="#" class="social-link">
-                            <i class="fab fa-facebook"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="footer-section">
-                    <h3>معلومات التواصل</h3>
-                    <div class="contact-info">
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-phone-alt"></i>
-                            </div>
-                            <div class="contact-details">
-                                <div class="contact-label">رقم الهاتف</div>
-                                <div class="contact-value">249961959414+</div>
-                            </div>
-                        </div>
-
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div class="contact-details">
-                                <div class="contact-label">البريد الإلكتروني</div>
-                                <div class="contact-value">info@sajishop.com</div>
-                            </div>
-                        </div>
-
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div class="contact-details">
-                                <div class="contact-label">العنوان</div>
-                                <div class="contact-value">بورتسودان ,شارع المحكمة   </div>
-                            </div>
-                        </div>
-
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-clock"></i>
-                            </div>
-                            <div class="contact-details">
-                                <div class="contact-label">ساعات العمل</div>
-                                <div class="contact-value">من الساعة 9 صباحاً حتى 10 مساءً</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>سجي شوب</h3>
+            <p class="footer-description">
+              متجر متخصص في بيع أجود أنواع العطور الفاخرة من أشهر الماركات
+              العالمية بأفضل الأسعار.
+            </p>
+            <div class="social-links">
+              <a href="#" class="social-link">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a href="#" class="social-link">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href="#" class="social-link">
+                <i class="fab fa-snapchat-ghost"></i>
+              </a>
+              <a href="#" class="social-link">
+                <i class="fab fa-facebook"></i>
+              </a>
             </div>
+          </div>
 
-            <div class="footer-bottom">
-                <p>&copy; 2024 سجي شوب. جميع الحقوق محفوظة.</p>
+          <div class="footer-section">
+            <h3>معلومات التواصل</h3>
+            <div class="contact-info">
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <i class="fas fa-phone-alt"></i>
+                </div>
+                <div class="contact-details">
+                  <div class="contact-label">رقم الهاتف</div>
+                  <div class="contact-value">249961959414+</div>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <i class="fas fa-envelope"></i>
+                </div>
+                <div class="contact-details">
+                  <div class="contact-label">البريد الإلكتروني</div>
+                  <div class="contact-value">info@sajishop.com</div>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <div class="contact-details">
+                  <div class="contact-label">العنوان</div>
+                  <div class="contact-value">بورتسودان ,شارع المحكمة</div>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <i class="fas fa-clock"></i>
+                </div>
+                <div class="contact-details">
+                  <div class="contact-label">ساعات العمل</div>
+                  <div class="contact-value">
+                    من الساعة 9 صباحاً حتى 10 مساءً
+                  </div>
+                </div>
+              </div>
             </div>
+          </div>
         </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2024 سجي شوب. جميع الحقوق محفوظة.</p>
+        </div>
+      </div>
     </footer>
 
     <!-- Floating WhatsApp -->
-    <a href="https://wa.me/961959414" class="floating-whatsapp" target="_blank">
-        <i class="fab fa-whatsapp"></i>
+    <a href="https://wa.link/k0pryf" class="floating-whatsapp" target="_blank">
+      <i class="fab fa-whatsapp"></i>
     </a>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Initialize carousel
-        const heroCarousel = new bootstrap.Carousel(document.getElementById('heroCarousel'), {
-            interval: 5000,
-            wrap: true
+      // Initialize carousel
+      const heroCarousel = new bootstrap.Carousel(
+        document.getElementById("heroCarousel"),
+        {
+          interval: 5000,
+          wrap: true,
+        }
+      );
+
+      // Wishlist functionality
+      document.querySelectorAll(".action-btn").forEach((btn) => {
+        btn.addEventListener("click", function () {
+          const icon = this.querySelector("i");
+          if (icon.classList.contains("far")) {
+            icon.classList.remove("far");
+            icon.classList.add("fas");
+            icon.style.color = "#ff4444";
+          } else {
+            icon.classList.remove("fas");
+            icon.classList.add("far");
+            icon.style.color = "";
+          }
+        });
+      });
+
+      // Search functionality
+      document
+        .querySelector(".search-input")
+        .addEventListener("input", function (e) {
+          const searchTerm = e.target.value.toLowerCase();
+          const products = document.querySelectorAll(".product-card");
+
+          products.forEach((product) => {
+            const productName = product
+              .querySelector(".product-name")
+              .textContent.toLowerCase();
+            const productBrand = product
+              .querySelector(".product-brand")
+              .textContent.toLowerCase();
+
+            if (
+              productName.includes(searchTerm) ||
+              productBrand.includes(searchTerm)
+            ) {
+              product.style.display = "block";
+            } else {
+              product.style.display = "none";
+            }
+          });
         });
 
-      
-
-        // Wishlist functionality
-        document.querySelectorAll('.action-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const icon = this.querySelector('i');
-                if (icon.classList.contains('far')) {
-                    icon.classList.remove('far');
-                    icon.classList.add('fas');
-                    icon.style.color = '#ff4444';
-                } else {
-                    icon.classList.remove('fas');
-                    icon.classList.add('far');
-                    icon.style.color = '';
-                }
+      // Smooth scroll for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
             });
+          }
         });
+      });
 
-        // Search functionality
-        document.querySelector('.search-input').addEventListener('input', function(e) {
-            const searchTerm = e.target.value.toLowerCase();
-            const products = document.querySelectorAll('.product-card');
+      // Parallax effect for floating bottles
+      window.addEventListener("scroll", () => {
+        const scrolled = window.pageYOffset;
+        const bottles = document.querySelectorAll(".bottle");
 
-            products.forEach(product => {
-                const productName = product.querySelector('.product-name').textContent.toLowerCase();
-                const productBrand = product.querySelector('.product-brand').textContent.toLowerCase();
-
-                if (productName.includes(searchTerm) || productBrand.includes(searchTerm)) {
-                    product.style.display = 'block';
-                } else {
-                    product.style.display = 'none';
-                }
-            });
+        bottles.forEach((bottle, index) => {
+          const speed = 0.5 + index * 0.1;
+          bottle.style.transform = `translateY(${scrolled * speed}px) rotate(${
+            scrolled * 0.1
+          }deg)`;
         });
-
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Parallax effect for floating bottles
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const bottles = document.querySelectorAll('.bottle');
-
-            bottles.forEach((bottle, index) => {
-                const speed = 0.5 + (index * 0.1);
-                bottle.style.transform = `translateY(${scrolled * speed}px) rotate(${scrolled * 0.1}deg)`;
-            });
-        });
+      });
     </script>
-</body>
+  </body>
 </html>
