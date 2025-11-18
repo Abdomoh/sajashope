@@ -260,28 +260,28 @@
         top: 10%;
         right: 10%;
         animation-delay: 0s;
-        background-image: url("image/products/1.webp");
+        background-image: url("../image/products/1.webp");
       }
 
       .bottle:nth-child(2) {
         top: 20%;
         left: 15%;
         animation-delay: 1s;
-        background-image: url("image/products/2.webp");
+        background-image: url("../image/products/2.webp");
       }
 
       .bottle:nth-child(3) {
         bottom: 15%;
         right: 20%;
         animation-delay: 2s;
-        background-image: url("image/products/3.webp");
+        background-image: url("../image/products/3.webp");
       }
 
       .bottle:nth-child(4) {
         bottom: 25%;
         left: 10%;
         animation-delay: 3s;
-        background-image: url("image/products/4.webp");
+        background-image: url("../image/products/4.webp");
       }
 
       @keyframes float {
